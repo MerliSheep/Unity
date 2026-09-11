@@ -1,0 +1,26 @@
+public enum E_Style_OnOff
+{
+    On,
+    Off,
+}
+public abstract class CustomGUIControl : MonoBehaviour
+{
+    public CustomGUIPos guiPos;
+    public GUIContent content;
+    public GUIStyle style;
+    public E_Style_OnOff styleOnOrOff = E_Style_OnOff.Off;
+    public void DrawGUI()
+    {
+        switch (styleOnOrOff)
+        {
+            case E_Style_OnOff.On:
+                StyleOnDraw();
+                break;
+            case E_Style_OnOff.Off:
+                StyleOffDraw();
+                break;
+        }
+    }
+    protected abstract void StyleOnDraw();//开启
+    protected abstract void StyleOffDraw();//关闭
+}
